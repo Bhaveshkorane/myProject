@@ -12,14 +12,21 @@ class empdata(models.Model):
 
 User=get_user_model()
 
-class profile(models.Model):
-    username=models.ForeignKey(User,on_delete=models.CASCADE)
-    first_name=models.TextField()
-    last_name=models.TextField()
-    email=models.EmailField()
-    age=models.IntegerField()
-    gender=models.CharField()
-    location=models.TextField(blank=True)
+# class profile(models.Model):
+#     username=models.ForeignKey(User,on_delete=models.CASCADE)
+#     first_name=models.TextField()
+#     last_name=models.TextField()
+#     email=models.EmailField()
+#     age=models.IntegerField()
+#     gender=models.CharField()
+#     location=models.TextField(blank=True)
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    age = models.IntegerField()
+    gender = models.CharField(max_length=10)
+    location = models.CharField(max_length=100, blank=True)
+
 
 
     def __str__(self):
