@@ -1,4 +1,4 @@
-<a href="http://127.0.0.1:8000/login/">login</a>
-    <a href="http://127.0.0.1:8000/addNew/">add new</a>
-    <a href="http://127.0.0.1:8000/">index</a>
+<a href="{% url 'addNew_url' %}"><button>addNew</button></a>
+    <a href="{% url 'login_url' %}"><button>Login</button></a>
+    <a href="{% url 'index_url' %}"><button>index</button></a>
     <b>this is login page</b>
