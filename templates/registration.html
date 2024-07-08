@@ -48,7 +48,7 @@
     </div>
     <div class="form-container">
         <h2>Sign Up</h2>
-        <form action="{% url 'sighup_url' %}" method="POST">
+        <form action="{% url 'signup_url' %}" method="POST">
             {% csrf_token %}
             <label for="uname">Username:</label>
             <input type="text" id="uname" name="uname" required>

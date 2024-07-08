@@ -21,7 +21,7 @@ User=get_user_model()
 #     gender=models.CharField()
 #     location=models.TextField(blank=True)
 
-class Profile(models.Model):
+class profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     age = models.IntegerField()
     gender = models.CharField(max_length=10)

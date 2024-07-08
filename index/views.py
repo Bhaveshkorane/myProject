@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse,redirect
 from django.contrib import messages, auth
-from .models import empdata,Profile
+from .models import empdata,profile
 from django.contrib.auth.models import User
 
 
@@ -65,7 +65,7 @@ def viewDetails(request):
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import profile
 
 def signup(request):
     if request.method == 'POST':
@@ -82,24 +82,23 @@ def signup(request):
         if pass1 == pass2:
             if User.objects.filter(email=email).exists():
                 messages.info(request, "The email already exists")
-                return redirect('signup/')
+                return redirect('signup_url')
             if User.objects.filter(username=username).exists():
                 messages.info(request, "Username already exists")
-                return redirect('signup/')
+                return redirect('signup_url')
             else:
                 user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, password=pass1)
                 user.save()
 
-                profile = Profile(user=user, age=age, gender=gender, location=location)
+                profile = profile(user=user, age=age, gender=gender, location=location)
                 profile.save()
 
-                return redirect('login/')
+                return redirect('login_url')
         else:
             messages.info(request, "Passwords do not match")
-            return redirect('signup/')
+            return redirect('signup_url')
     else:
         return render(request, 'registration.html')
-
 
 def login(request):
     return render(request,'login.html')
